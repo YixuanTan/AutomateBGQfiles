@@ -2,7 +2,6 @@ import os
 import paramiko
 import sys
 import subprocess
-import time
 
 if len(sys.argv) != 2:
     print "args missing"
@@ -37,18 +36,9 @@ for label in range(increment, totalTmc, increment):
     sftp.get(file, localDir + file)
     
     #  USER DEFINED CODE BLOCK
-    #time.sleep(5)
-    #command = ['/users/tany3/Downloads/wrongendian.out ', localDir + file, localDir + file + 'c']
-    #print 'command1 ', command
-    #call(command)
     cmd = '/users/tany3/Downloads/wrongendian.out ' + localDir + file + ' ' + localDir + file + 'c'
     os.system(cmd) 
-    #time.sleep(10)
 
-    #f = open(localDir + outputname, "aw")
-    #command = '/users/tany3/Downloads/mmsp2xyz ' + localDir + file + 'c' + ' ' + localDir + filePrefix + formatted + '.txt'
-    #print 'command2 ', command
-    #call(command, stdout=f)
     args = ('/users/tany3/Downloads/mmsp2xyz', localDir + file + 'c', localDir + filePrefix + formatted + '.txt')
     popen = subprocess.Popen(args, stdout=subprocess.PIPE)
     popen.wait()
@@ -60,6 +50,6 @@ for label in range(increment, totalTmc, increment):
     # clean 
     cmd = 'rm ' + localDir + filePrefix + '*'
     os.system(cmd)
-    #os.remove(localDir + filePrefix + '*')
+
 
 
