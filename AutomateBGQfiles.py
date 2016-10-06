@@ -49,7 +49,7 @@ for label in range(increment, totalTmc, increment):
 
     # clean 
     cmd = 'rm ' + localDir + filePrefix + '*'
-    os.system(cmd)
+    #os.system(cmd)
 
 
 
